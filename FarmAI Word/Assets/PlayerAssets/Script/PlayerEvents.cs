@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskController : MonoBehaviour
+public class PlayerEvents : MonoBehaviour
 {
     GameObject taskBox;
     bool canTask;
@@ -26,16 +26,18 @@ public class TaskController : MonoBehaviour
 
     private void MakeTask()
     {
-        print("Ativar Task");
+        taskBox.GetComponent<FarmScript>().haveTask = false;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Plantacao")
+            taskBox = other.gameObject;
             canTask = true;
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Plantacao")
+            taskBox = null;
             canTask = false;
     }
 }
