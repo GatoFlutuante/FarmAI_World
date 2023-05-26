@@ -17,7 +17,7 @@ public class InventoryControll : MonoBehaviour
         moneyText.text = "$ " + money.ToString();
         integridadeSlider.value = integridade / 100;
 
-        integridade -= 1 * Time.deltaTime;
+        //integridade -= 1 * Time.deltaTime;
         integridadeText.text = integridade.ToString() + "%";
     }
 }
