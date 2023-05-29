@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerEvents : MonoBehaviour
 {
-    GameObject taskBox;
+    public GameObject taskBox;
     bool canTask;
 
     private void Start()
@@ -17,7 +14,7 @@ public class PlayerEvents : MonoBehaviour
     {
         if (canTask)
         {
-            if(Input.GetButtonDown("Action"))
+            if(Input.GetButton("Action"))
             {
                 MakeTask();
             }
@@ -26,17 +23,17 @@ public class PlayerEvents : MonoBehaviour
 
     private void MakeTask()
     {
-        taskBox.GetComponent<FarmScript>().haveTask = false;
+        taskBox.GetComponent<ITask>().StartTask();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Plantacao")
+        if (other.gameObject.tag == "TaskArea")
             taskBox = other.gameObject;
             canTask = true;
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Plantacao")
+        if (other.gameObject.tag == "TaskArea")
             taskBox = null;
             canTask = false;
     }

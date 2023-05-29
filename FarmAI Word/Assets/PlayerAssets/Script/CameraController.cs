@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    float rotX;
-    public GameObject character;
     public GameObject pai;
+    public GameObject character;
     public Transform target;
+    float rotX;
+
     Vector3 distanceByCharacter;
 
     private void Start()
@@ -16,6 +18,11 @@ public class CameraController : MonoBehaviour
     }
 
     private void Update()
+    {
+        CameraMovement();
+    }
+
+    private void CameraMovement()
     {
         rotX += Input.GetAxis("Mouse Y");
         rotX = Mathf.Clamp(rotX, -40, 40);

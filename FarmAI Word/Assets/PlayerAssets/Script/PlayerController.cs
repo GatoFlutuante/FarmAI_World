@@ -11,11 +11,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("Character - Components")]
     public GameObject character;
+    Animator animator;
     float angle;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = character.GetComponent<Animator>();
     }
     private void Update()
     {
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         //Movement
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        moveDirection.y -= 7f;
         moveDirection = transform.TransformDirection(moveDirection);
         controller.Move(moveDirection * speed * Time.deltaTime);
 
@@ -41,5 +44,9 @@ public class PlayerController : MonoBehaviour
         {
             character.transform.localRotation = Quaternion.Slerp(character.transform.localRotation, rotation, 15 * Time.deltaTime);
         }
+
+        //Animations
+        Vector3 movementXY = new Vector3(moveDirection.x, 0, moveDirection.z);
+        animator.SetFloat("pMove", movementXY.magnitude);
     }
 }
