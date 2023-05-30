@@ -19,19 +19,29 @@ public class InventoryController : MonoBehaviour
         itensDetecteds = Physics.OverlapSphere(transform.position, 5, 1 << LayerMask.NameToLayer("Coletavel"));
         if (Input.GetButtonDown("Action") && itemInHand == null)
         {
+            if(itemBox() == null)
+            {
+                return;
+            }
             GameObject item = itemBox().GetComponent<InsecticideBox>().GetInsecticideItem();
             item.transform.parent = handPoint;
-            item.transform.position = transform.position;
+            item.transform.position = handPoint.transform.position;
+            itemInHand = item;
         }
     }
 
     private GameObject itemBox()
     {
+        Collider closestItem = null;
+        float closestDistance = float.MaxValue;
         foreach (Collider itens in itensDetecteds)
         {
-            if(Vector3.Distance(transform.position, itens.transform.position) < 2f)
+            float distance = Vector3.Distance(transform.position, itens.transform.position);
+            if(distance < closestDistance && distance < 2f)
             {
-                return itens.gameObject;
+                closestDistance = distance;
+                closestItem = itens;
+                return closestItem.gameObject;
             }
         }
         return null;
