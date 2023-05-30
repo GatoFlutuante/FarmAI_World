@@ -3,19 +3,26 @@ using UnityEngine;
 public class InsecticideBox : MonoBehaviour
 {
     public GameObject insecticidePrefab; // Prefab do inseticida
+    public UI_CaixaDeInceticida ui;
 
     public GameObject GetInsecticideItem()
     {
-        // Instancia o inseticida a partir do prefab
-        GameObject insecticideItem = Instantiate(insecticidePrefab, transform.position, Quaternion.identity);
+        if(ui.stockCount > 0)
+        {
+            // Instancia o inseticida a partir do prefab
+            GameObject insecticideItem = Instantiate(insecticidePrefab, transform.position, Quaternion.identity);
 
-        // Retorna o inseticida instanciado
-        return insecticideItem;
+            ui.stockCount--;
+            // Retorna o inseticida instanciado
+            return insecticideItem;
+        }
+        else
+        {
+            return null;
+        }
     }
-    InsecticideBox insecticideBox; // Referência ao componente InsecticideBox
-
-    void Start()
+    public void PickInsecticideItem()
     {
-        insecticideBox = GetComponent<InsecticideBox>();
+        ui.stockCount++;
     }
 }

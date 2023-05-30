@@ -17,16 +17,28 @@ public class InventoryController : MonoBehaviour
     private void DetectItens()
     {
         itensDetecteds = Physics.OverlapSphere(transform.position, 5, 1 << LayerMask.NameToLayer("Coletavel"));
-        if (Input.GetButtonDown("Action") && itemInHand == null)
+        if (Input.GetButtonDown("Action"))
         {
-            if(itemBox() == null)
+            if(itemInHand != null)
             {
-                return;
+                if(itemInHand.tag == itemBox().tag)
+                {
+                    itemBox().GetComponent<InsecticideBox>().ui.stockCount++;
+                    Destroy(itemInHand);
+                }
             }
-            GameObject item = itemBox().GetComponent<InsecticideBox>().GetInsecticideItem();
-            item.transform.parent = handPoint;
-            item.transform.position = handPoint.transform.position;
-            itemInHand = item;
+            else
+            {
+                if (itemBox() == null)
+                {
+                    return;
+                }
+                GameObject item = itemBox().GetComponent<InsecticideBox>().GetInsecticideItem();
+                item.transform.parent = handPoint;
+                item.transform.position = handPoint.transform.position;
+                item.tag = itemBox().tag;
+                itemInHand = item;
+            }
         }
     }
 
