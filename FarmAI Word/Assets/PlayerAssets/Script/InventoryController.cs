@@ -19,7 +19,7 @@ public class InventoryController : MonoBehaviour
         itensDetecteds = Physics.OverlapSphere(transform.position, 5, 1 << LayerMask.NameToLayer("Coletavel"));
         if (Input.GetButtonDown("Action"))
         {
-            if(itemInHand != null)
+            if(itemInHand != null && itemBox() != null)
             {
                 if(itemInHand.tag == itemBox().tag)
                 {
