@@ -19,13 +19,14 @@ public class InventoryController : MonoBehaviour
         itensDetecteds = Physics.OverlapSphere(transform.position, 5, 1 << LayerMask.NameToLayer("Coletavel"));
         if (Input.GetButtonDown("Action") && itemInHand == null)
         {
-            GameObject item = itemPerto();
+            itemBox().GetComponent<InsecticideBox>().GetInsecticideItem();
+            GameObject item = GetInsecticideItem();
             item.transform.parent = handPoint;
-            item.transform.position = handPoint.position;
+            item.transform.position = transform.position;
         }
     }
 
-    private GameObject itemPerto()
+    private GameObject itemBox()
     {
         foreach (Collider itens in itensDetecteds)
         {
