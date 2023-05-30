@@ -19,8 +19,7 @@ public class InventoryController : MonoBehaviour
         itensDetecteds = Physics.OverlapSphere(transform.position, 5, 1 << LayerMask.NameToLayer("Coletavel"));
         if (Input.GetButtonDown("Action") && itemInHand == null)
         {
-            itemBox().GetComponent<InsecticideBox>().GetInsecticideItem();
-            GameObject item = GetInsecticideItem();
+            GameObject item = itemBox().GetComponent<InsecticideBox>().GetInsecticideItem();
             item.transform.parent = handPoint;
             item.transform.position = transform.position;
         }
