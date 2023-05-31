@@ -1,57 +1,84 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 public class TaskInsecticide : MonoBehaviour, ITask
 {
     public GameObject alert;
+    public PlantationStatus integrity;
+    GameObject player;
+
     public float BugTimer;
     public bool Infestation;
-    public PlantationStatus Integrity;
-    public float Health;
 
-    GameObject player;
+    public string infestationType;
+
     private void Start()
     {
         ResetTimer();
-        alert.SetActive(false);
-        Integrity = GetComponent<PlantationStatus>();
-        Health = Integrity.pHealth;
-    }
-
-    private void ResetTimer()
-    {
-        BugTimer = Random.Range(10f, 30f);
+        integrity = GetComponent<PlantationStatus>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        BugTimer -= Time.deltaTime;
-        if(BugTimer <= 0)
+        alert.SetActive(HaveInfestation());
+        LifeController();
+    }
+    private void LifeController()
+    {
+        if (!HaveProblem())
         {
-            Infestation = true;
-            alert.SetActive(true);
-            Health -= Time.deltaTime * 2;
+            if (integrity.pHealth < 100)
+            {
+                integrity.pHealth += Time.deltaTime * 2;
+            }
         }
-        player = GameObject.FindGameObjectWithTag("Player");
+        else
+        {
+            if (integrity.pHealth > 0)
+            {
+                integrity.pHealth -= Time.deltaTime * 2;
+            }
+        }
+
+    }
+    private bool HaveInfestation()
+    {
+        if(BugTimer > 0)
+        {
+            BugTimer -= Time.deltaTime;
+        }
+        return BugTimer < 0;
+    }
+    private bool HaveProblem()
+    {
+        if(HaveInfestation() || integrity.pWater <= 0.1)
+            return true;
+
+        return false;
+    }
+    private void ResetTimer()
+    {
+        BugTimer = Random.Range(30f, 60f);
     }
     public void StartTask()
     {
         InventoryController inventory = player.GetComponent<InventoryController>();
-        if (inventory.itemInHand != null)
+        if (inventory.itemInHand != null && HaveInfestation())
         {
             GameObject item = inventory.itemInHand;
-            if (item.tag == "IncetcidaTipo1")
+            if (item.tag != infestationType)
+            {
+                print("Errado");
+                integrity.pHealth -= 10;
+                Destroy(item);
+            }
+            else
             {
                 ResetTimer();
                 Infestation = false;
                 alert.SetActive(false);
                 Destroy(item);
-            }       
-            else
-                print("Errado");
+            }     
         }
         else
             print("Você Precisa do inceticida");

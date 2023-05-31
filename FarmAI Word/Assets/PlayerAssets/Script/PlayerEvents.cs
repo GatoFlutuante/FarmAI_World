@@ -5,11 +5,6 @@ public class PlayerEvents : MonoBehaviour
     public GameObject taskBox;
     bool canTask;
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;   
-        Cursor.visible = false;
-    }
     private void Update()
     {
         if (canTask)

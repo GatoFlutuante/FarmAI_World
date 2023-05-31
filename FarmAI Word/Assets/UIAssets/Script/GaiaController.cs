@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -13,8 +12,13 @@ public class GaiaController : MonoBehaviour
     private void Start()
     {
         ExibirMensagem(0);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
-
+    private void Update()
+    {
+        messageText.text = message[msgIndex]; 
+    }
     private void ExibirMensagem(int m)
     {
         StartCoroutine(ExibirPainel());
@@ -25,13 +29,6 @@ public class GaiaController : MonoBehaviour
     {
         painelGaia.SetActive(true);
         yield return new WaitForSeconds(3f);
-        painelGaia.SetActive(false);  
+        painelGaia.SetActive(false);
     }
-
-    private void Update()
-    {
-        messageText.text = message[msgIndex]; 
-    }
-
-    
 }

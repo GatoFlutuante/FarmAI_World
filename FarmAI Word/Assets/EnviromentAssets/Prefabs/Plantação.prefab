@@ -747,10 +747,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alert: {fileID: 639687348}
+  integrity: {fileID: 889370790975827419}
   BugTimer: 0
   Infestation: 0
-  Integrity: {fileID: 889370790975827419}
-  Health: 0
+  infestationTypes:
+  - IncetcidaTipo1
+  - IncetcidaTipo2
 --- !u!114 &889370790975827419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,6 +767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pHealth: 100
   pWater: 100
+  barril: {fileID: 7734690567671032397, guid: 5750b3475d28af54586d73d4902a12b1, type: 3}
 --- !u!1 &6698315404876674472
 GameObject:
   m_ObjectHideFlags: 0
