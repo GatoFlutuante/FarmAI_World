@@ -10,6 +10,7 @@ public class TaskInsecticide : MonoBehaviour, ITask
     public float BugTimer;
     public bool Infestation;
     public PlantationStatus Integrity;
+    [SerializeField]
     public float Health;
 
     GameObject player;
@@ -18,7 +19,7 @@ public class TaskInsecticide : MonoBehaviour, ITask
         ResetTimer();
         alert.SetActive(false);
         Integrity = GetComponent<PlantationStatus>();
-        Health = Integrity.pHealth;
+        Health = 100;
     }
 
     private void ResetTimer()
@@ -28,6 +29,10 @@ public class TaskInsecticide : MonoBehaviour, ITask
 
     private void Update()
     {
+        if (BugTimer > 0 && Health <= 100)
+        {
+            Health += Time.deltaTime / 2;
+        }
         BugTimer -= Time.deltaTime;
         if(BugTimer <= 0)
         {

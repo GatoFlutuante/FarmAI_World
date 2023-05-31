@@ -11,14 +11,27 @@ public interface ITask
 public class BarrilDeAguaTask : MonoBehaviour, ITask
 {
     public Slider nivelDeAgua;
+    [SerializeField]
     public float nivelDeAguaValue;
+
+    private void Start()
+    {
+        nivelDeAguaValue = 100;
+    }
 
     private void Update()
     {
         nivelDeAgua.value = nivelDeAguaValue / 100;
+        if (nivelDeAguaValue >= 0)
+        {
+            nivelDeAguaValue -= Time.deltaTime;
+        }
     }
     public void StartTask()
     {
-        nivelDeAguaValue += Time.deltaTime * 10;
+        if (nivelDeAguaValue <= 100)
+        {
+            nivelDeAguaValue += Time.deltaTime * 10;
+        }
     }
 }
