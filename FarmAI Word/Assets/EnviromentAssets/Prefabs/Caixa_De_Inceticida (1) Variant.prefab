@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1885698839, guid: 12ed8f0bea41e524b99298e20f22075d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6484108523251067530, guid: 12ed8f0bea41e524b99298e20f22075d, type: 3}
       propertyPath: m_Name
-      value: Caixa_De_Inceticida (1)
+      value: Caixa_De_Inceticida (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6484108523251067530, guid: 12ed8f0bea41e524b99298e20f22075d, type: 3}
       propertyPath: m_TagString
@@ -21,15 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6484108523251067542, guid: 12ed8f0bea41e524b99298e20f22075d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.67907
+      value: 67.17
       objectReference: {fileID: 0}
     - target: {fileID: 6484108523251067542, guid: 12ed8f0bea41e524b99298e20f22075d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 1.022188
       objectReference: {fileID: 0}
     - target: {fileID: 6484108523251067542, guid: 12ed8f0bea41e524b99298e20f22075d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.01692
+      value: 71.54
       objectReference: {fileID: 0}
     - target: {fileID: 6484108523251067542, guid: 12ed8f0bea41e524b99298e20f22075d, type: 3}
       propertyPath: m_LocalRotation.w

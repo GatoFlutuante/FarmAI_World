@@ -47,6 +47,7 @@ public class TaskInsecticide : MonoBehaviour, ITask
             {
                 ResetTimer();
                 Infestation = false;
+                alert.SetActive(false);
                 Destroy(item);
             }       
             else
