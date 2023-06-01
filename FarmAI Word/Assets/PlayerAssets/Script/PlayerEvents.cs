@@ -22,13 +22,13 @@ public class PlayerEvents : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "TaskArea")
+        if (other.gameObject.tag == "TaskArea" || other.gameObject.tag == "Farm")
             taskBox = other.gameObject;
             canTask = true;
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "TaskArea")
+        if (other.gameObject.tag == "TaskArea" || other.gameObject.tag == "Farm")
             taskBox = null;
             canTask = false;
     }

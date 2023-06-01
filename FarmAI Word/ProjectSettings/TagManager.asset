@@ -8,6 +8,7 @@ TagManager:
   - TaskArea
   - IncetcidaTipo1
   - IncetcidaTipo2
+  - Farm
   layers:
   - Default
   - TransparentFX

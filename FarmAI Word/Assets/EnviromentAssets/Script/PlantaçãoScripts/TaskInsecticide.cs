@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TaskInsecticide : MonoBehaviour, ITask
 {
@@ -8,6 +9,8 @@ public class TaskInsecticide : MonoBehaviour, ITask
 
     public float BugTimer;
     public bool Infestation;
+    public Image infestationImage;
+    public Sprite infestationSprite;
 
     public string infestationType;
 
@@ -15,6 +18,7 @@ public class TaskInsecticide : MonoBehaviour, ITask
     {
         ResetTimer();
         integrity = GetComponent<PlantationStatus>();
+        infestationImage.sprite = infestationSprite;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -41,7 +45,7 @@ public class TaskInsecticide : MonoBehaviour, ITask
         }
 
     }
-    private bool HaveInfestation()
+    public bool HaveInfestation()
     {
         if(BugTimer > 0)
         {
@@ -58,7 +62,7 @@ public class TaskInsecticide : MonoBehaviour, ITask
     }
     private void ResetTimer()
     {
-        BugTimer = Random.Range(30f, 60f);
+        BugTimer = Random.Range(40f, 150f);
     }
     public void StartTask()
     {
