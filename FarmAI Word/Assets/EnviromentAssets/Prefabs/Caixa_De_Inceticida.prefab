@@ -192,11 +192,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1013850774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673fc4aa3a2a1274e934574baf39a310, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c057c4098c43404eafd85c346fd6840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   incecticideCountText: {fileID: 443279169}
-  stockCount: 20
+  stockCount: 0
 --- !u!1 &1885698837
 GameObject:
   m_ObjectHideFlags: 0

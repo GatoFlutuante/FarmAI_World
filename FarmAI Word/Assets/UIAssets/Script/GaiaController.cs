@@ -12,8 +12,6 @@ public class GaiaController : MonoBehaviour
     private void Start()
     {
         ExibirMensagem(0);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
     private void Update()
     {
