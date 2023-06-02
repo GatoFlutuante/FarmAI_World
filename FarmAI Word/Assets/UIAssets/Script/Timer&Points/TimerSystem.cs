@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimerSystem : MonoBehaviour
 {
     public float timeRemaining = 300;
     public bool timerIsRunning = false;
     public Text timeText;
+    public CofreScript cofreScript;
     private void Start()
     {
         timerIsRunning = true;
@@ -24,6 +24,8 @@ public class TimerSystem : MonoBehaviour
             else
             {
                 timeRemaining = 0;
+                cofreScript.GetMoney();
+                SceneManager.LoadScene(0);
                 timerIsRunning = false;
             }
         }

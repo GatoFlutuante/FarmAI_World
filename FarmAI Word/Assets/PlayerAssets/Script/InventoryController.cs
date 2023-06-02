@@ -20,7 +20,7 @@ public class InventoryController : MonoBehaviour
             {
                 if(itemInHand.tag == itemBox().tag)
                 {
-                    itemBox().GetComponent<InsecticideBox>().ui.stockCount++;
+                    itemBox().GetComponent<InsecticideBox>().ui.currentStockCount++;
                     Destroy(itemInHand);
                 }
             }

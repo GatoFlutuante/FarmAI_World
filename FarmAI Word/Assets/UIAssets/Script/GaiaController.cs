@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -74,7 +73,7 @@ public class GaiaController : MonoBehaviour
         if(Time.time > timeByShow)
         {
             timeByShow = Time.time + 5f;
-            ShowInformation(0);
+            ShowInformation(Random.Range(0, informations.Length));
         }
     }
 
@@ -88,13 +87,13 @@ public class GaiaController : MonoBehaviour
 
     private void ScanProblem()
     {
-        if (HaveAnyInfestation())
-        {
-            ShowTips(0);
-        }
-        else if (!HaveWater())
+        if (!HaveWater())
         {
             ShowTips(1);
+        }
+        else if (HaveAnyInfestation())
+        {
+            ShowTips(0);
         }
     }
 

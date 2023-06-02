@@ -9,6 +9,9 @@ TagManager:
   - IncetcidaTipo1
   - IncetcidaTipo2
   - Farm
+  - Cofre
+  - IncetcidaTipo3
+  - IncetcidaTipo4
   layers:
   - Default
   - TransparentFX
