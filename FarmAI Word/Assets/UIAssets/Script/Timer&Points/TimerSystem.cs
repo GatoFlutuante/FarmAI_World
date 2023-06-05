@@ -25,7 +25,7 @@ public class TimerSystem : MonoBehaviour
             {
                 timeRemaining = 0;
                 cofreScript.GetMoney();
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(2);
                 timerIsRunning = false;
             }
         }

@@ -73,7 +73,7 @@ public class GaiaController : MonoBehaviour
         if(Time.time > timeByShow)
         {
             timeByShow = Time.time + 5f;
-            ShowInformation(Random.Range(0, informations.Length));
+            //ShowInformation(Random.Range(0, informations.Length));
         }
     }
 

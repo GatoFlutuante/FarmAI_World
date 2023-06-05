@@ -12,15 +12,11 @@ public class TaskInsecticide : MonoBehaviour, ITask
     public Image infestationImage;
     public Sprite infestationSprite;
 
-    [SerializeField]
-    public int InfestationPoints;
-
 
     public string infestationType;
 
     private void Start()
     {
-        InfestationPoints = 0;
         ResetTimer();
         integrity = GetComponent<PlantationStatus>();
         infestationImage.sprite = infestationSprite;
@@ -83,7 +79,6 @@ public class TaskInsecticide : MonoBehaviour, ITask
             }
             else
             {
-                InfestationPoints = InfestationPoints + 20;
                 ResetTimer();
                 Infestation = false;
                 alert.SetActive(false);
