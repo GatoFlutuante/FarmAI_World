@@ -6,12 +6,12 @@ public class TaskInsecticide : MonoBehaviour, ITask
     public GameObject alert;
     public PlantationStatus integrity;
     GameObject player;
+    FXController vfx;
 
     public float BugTimer;
     public bool Infestation;
     public Image infestationImage;
     public Sprite infestationSprite;
-
 
     public string infestationType;
 
@@ -21,13 +21,29 @@ public class TaskInsecticide : MonoBehaviour, ITask
         integrity = GetComponent<PlantationStatus>();
         infestationImage.sprite = infestationSprite;
         player = GameObject.FindGameObjectWithTag("Player");
+        vfx = GetComponent<FXController>();
     }
 
     private void Update()
     {
-        alert.SetActive(HaveInfestation());
-        LifeController();
+        if (isLife())
+        {
+            alert.SetActive(HaveInfestation());
+            LifeController();
+            if (HaveInfestation())
+            {
+                vfx.StartAlert();
+            }
+        }
+        else
+            alert.SetActive(false);
     }
+
+    private bool isLife()
+    {
+        return integrity.pHealth > 0.2f;
+    }
+
     private void LifeController()
     {
         if (!HaveProblem())
@@ -48,11 +64,17 @@ public class TaskInsecticide : MonoBehaviour, ITask
     }
     public bool HaveInfestation()
     {
+        bool haveInfestation = false;
         if(BugTimer > 0)
         {
             BugTimer -= Time.deltaTime;
+            haveInfestation = false;
         }
-        return BugTimer < 0;
+        else if(BugTimer <= 0 && isLife())
+        {
+            haveInfestation = true;
+        }
+        return haveInfestation;
     }
     private bool HaveProblem()
     {
@@ -74,6 +96,7 @@ public class TaskInsecticide : MonoBehaviour, ITask
             if (item.tag != infestationType)
             {
                 print("Errado");
+                vfx.StartDeathVFX();
                 integrity.pHealth -= 10;
                 Destroy(item);
             }
@@ -81,6 +104,7 @@ public class TaskInsecticide : MonoBehaviour, ITask
             {
                 ResetTimer();
                 Infestation = false;
+                vfx.StartCompleteVFX();
                 alert.SetActive(false);
                 Destroy(item);
             }     
