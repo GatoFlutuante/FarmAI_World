@@ -67,4 +67,8 @@ public class FXController : MonoBehaviour
             au.PlayOneShot(audios[Random.Range(0, audios.Length)]);
         }
     }
+    public void StartTakeItem(int n)
+    {
+        au.PlayOneShot(audios[n]);
+    }
 }

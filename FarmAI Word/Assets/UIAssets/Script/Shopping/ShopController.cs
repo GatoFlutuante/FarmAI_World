@@ -8,6 +8,12 @@ public class ShopController : MonoBehaviour
     //Sistema de compra
     CofreScript cofre;
     public GameObject[] insectsideBoxes;
+    FXController fx;
+
+    private void Start()
+    {
+        fx = GetComponent<FXController>();
+    }
 
     private void Update()
     {
@@ -16,7 +22,13 @@ public class ShopController : MonoBehaviour
     private void VisibilityController()
     {
         if (Input.GetButtonDown("Shop"))
+        {
+            if (!inShop)
+            {
+                fx.StartTakeItem(0);
+            }
             inShop = !inShop;
+        }
 
         shopping.SetActive(inShop);
 
@@ -41,7 +53,8 @@ public class ShopController : MonoBehaviour
         }
         else
         {
-            insectsideBoxes[boxIndex].GetComponent<InsecticideBox>().PickInsecticideItem();
+            insectsideBoxes[boxIndex].GetComponent<InsecticideBox>().BuyInsecticideItem();
+            fx.StartTakeItem(1);
             cofre.PayItem(insectsideBoxes[boxIndex].GetComponent<InsecticideBox>().itemValue);
         }
     }

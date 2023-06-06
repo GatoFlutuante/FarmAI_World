@@ -7,10 +7,12 @@ public class InsecticideBox : MonoBehaviour
     public int itemValue;
     public UI_CaixaDeInceticida ui;
     public Text shopValueText;
+    FXController fx;
 
     private void Start()
     {
         shopValueText.text = itemValue.ToString();
+        fx = GetComponent<FXController>();
     }
     public GameObject GetInsecticideItem()
     {
@@ -19,6 +21,7 @@ public class InsecticideBox : MonoBehaviour
             // Instancia o inseticida a partir do prefab
             GameObject insecticideItem = Instantiate(insecticidePrefab, transform.position, Quaternion.identity);
 
+            fx.StartTakeItem(0);
             ui.currentStockCount--;
             // Retorna o inseticida instanciado
             return insecticideItem;
@@ -29,6 +32,11 @@ public class InsecticideBox : MonoBehaviour
         }
     }
     public void PickInsecticideItem()
+    {
+        ui.currentStockCount++;
+        fx.StartTakeItem(0);
+    }
+    public void BuyInsecticideItem()
     {
         ui.currentStockCount++;
     }
