@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 7710228337161704197}
   - component: {fileID: 21272141468359645}
   - component: {fileID: 2048026832}
+  - component: {fileID: 2106108344722799472}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -233,6 +234,7 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 5
   character: {fileID: 919132149216202416}
+  fx: {fileID: 0}
 --- !u!114 &21272141468359645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +263,26 @@ MonoBehaviour:
   itensDetecteds: []
   itemInHand: {fileID: 0}
   handPoint: {fileID: 2120945125}
+--- !u!114 &2106108344722799472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7710228337161704194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02a343af99c7c7498e37daee80c3c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskComplete: {fileID: 0}
+  plantationDeath: {fileID: 0}
+  target: {fileID: 0}
+  audios:
+  - {fileID: 8300000, guid: 2c30edfa0f40ee74abeace36c0aa7ebc, type: 3}
+  - {fileID: 8300000, guid: a1df1bd795d3085409b4f43b76271584, type: 3}
+  - {fileID: 8300000, guid: 311e652a01dbe2145a50326c483f0f4e, type: 3}
+  - {fileID: 8300000, guid: 7d559b6753f43d547888fa5350748952, type: 3}
 --- !u!1001 &60912609
 PrefabInstance:
   m_ObjectHideFlags: 0

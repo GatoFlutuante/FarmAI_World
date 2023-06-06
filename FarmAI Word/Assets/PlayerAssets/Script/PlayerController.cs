@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,16 +14,19 @@ public class PlayerController : MonoBehaviour
     public GameObject character;
     Animator animator;
     float angle;
+    public FXController fx;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = character.GetComponent<Animator>();
+        fx = GetComponent<FXController>();  
     }
     private void Update()
     {
         ControllerMovement();
         CharacterMovement();
+        StepsSounds();
     }
     private void ControllerMovement()
     {
@@ -36,6 +40,15 @@ public class PlayerController : MonoBehaviour
         rotY += Input.GetAxis("Mouse X") * rotationSpeed;
         transform.rotation = Quaternion.Euler(0, rotY, 0);
     }
+
+    private void StepsSounds()
+    {
+        if(Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        {
+            fx.StartStepsSound();
+        }
+    }
+
     private void CharacterMovement()
     {
         angle = Mathf.Atan2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Mathf.Rad2Deg;
